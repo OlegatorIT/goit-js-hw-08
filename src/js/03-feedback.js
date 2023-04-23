@@ -16,9 +16,41 @@ function onValueInput() {
 }
 function onSubmit(e) {
   e.preventDefault();
-  console.log(currentValuesObj());
-  feedbackForm.reset();
-  localStorage.removeItem(LOCALSTORAGE_KEY);
+
+  const { value: emailValue } = email;
+  const { value: messageValue } = message;
+
+  if (emailValue === '') {
+    email.classList.add('accent');
+    email.setAttribute('placeholder', 'Enter your email');
+  }
+  if (emailValue !== '') {
+    if (email.classList.contains('accent')) {
+      email.classList.remove('accent');
+    }
+    if (email.hasAttribute('placeholder')) {
+      email.removeAttribute('placeholder');
+    }
+  }
+
+  if (messageValue === '') {
+    message.classList.add('accent');
+    message.setAttribute('placeholder', 'Enter your message');
+  }
+  if (messageValue !== '') {
+    if (message.classList.contains('accent')) {
+      message.classList.remove('accent');
+    }
+    if (message.hasAttribute('placeholder')) {
+      message.removeAttribute('placeholder');
+    }
+
+    if (messageValue !== '' && emailValue !== '') {
+      console.log(currentValuesObj());
+      feedbackForm.reset();
+      localStorage.removeItem(LOCALSTORAGE_KEY);
+    }
+  }
 }
 
 function chackedLocalStorage() {

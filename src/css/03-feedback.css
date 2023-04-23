@@ -29,3 +29,11 @@ textarea {
 textarea {
   resize: none;
 }
+
+.message-accent {
+  border: solid 2px red;
+}
+
+.accent {
+  border: solid 2px red;
+}
